@@ -16,14 +16,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Ajoute un gestionnaire pour la route /
+app.get('/', (req, res) => {
+  res.json({ message: 'Bienvenue sur l\'API v-card!' });
+});
+
 app.use(mes_routes);
 
 const PORT = process.env.PORT || 5000;
 
-// Remplace module.exports par export default
 export default app;
 
-// Pour tester localement
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Serveur en écoute sur le port ${PORT}`);
