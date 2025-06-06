@@ -17,8 +17,11 @@ app.use(cors());
 app.use(express.json());
 
 // Ajoute un gestionnaire pour la route /
+app.use(express.static(path.join(__dirname, '/')));
+
+// Rediriger la route racine vers index.html
 app.get('/', (req, res) => {
-  res.json({ message: 'Bienvenue sur l\'API v-card!' });
+  res.sendFile(path.join(__dirname, '/', 'index.html'));
 });
 
 app.use(mes_routes);
