@@ -17,11 +17,11 @@ app.use(cors());
 app.use(express.json());
 
 // Ajoute un gestionnaire pour la route /
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, './src')));
 
 // Rediriger la route racine vers index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/', 'index.html'));
+  res.sendFile(path.join(__dirname, './src/main.tsx', 'main.tsx'));
 });
 
 app.use(mes_routes);
