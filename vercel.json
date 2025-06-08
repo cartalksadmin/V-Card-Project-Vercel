@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "index.html",
+      "src": "V-Card-Project-Vercel/**/*",
       "use": "@vercel/static"
     }
   ],
