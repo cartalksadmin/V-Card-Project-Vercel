@@ -17,12 +17,20 @@
       "dest": "server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "dist/$1"
+      "src": "/admin",
+      "dest": "dist/admin.html"
+    },
+    {
+      "src": "/portfolio/(.*)",
+      "dest": "dist/portfolio.html"
     },
     {
       "src": "/",
       "dest": "dist/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/$1"
     }
   ]
 }
