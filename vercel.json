@@ -22,7 +22,7 @@
     },
     {
       "src": "/portfolio/(.*)",
-      "dest": "dist/portfolio.html"
+      "dest": "dist/index.html"
     },
     {
       "src": "/",
