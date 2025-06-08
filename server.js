@@ -19,12 +19,19 @@ const pool = new Pool({
 
 const app = express();
 
-// Configurer CORS pour autoriser toutes les origines (pour le développement local)
-app.use(cors({
-  origin: 'https://v-card-project-vercel.vercel.app', // Remplace par l'URL de ton frontend local (par ex. Vite)
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
-  credentials: true // Si tu utilises des cookies ou des en-têtes d'authentification
-}));
+// Configurer CORS dynamiquement selon l'environnement
+const corsOptions = {
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+};
+
+if (process.env.NODE_ENV === 'production') {
+  corsOptions.origin = 'https://v-card-project-vercel.vercel.app';
+} else {
+  corsOptions.origin = 'http://localhost:5173'; // Port par défaut de Vite en dev
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
