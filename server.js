@@ -1,11 +1,10 @@
 import { Pool } from 'pg';
 import cors from 'cors';
 import express from 'express';
-import path from 'path'; // Ajoute cette ligne pour importer le module path
+import path from 'path';
 import { fileURLToPath } from 'url';
 import mes_routes from './src/routes.js';
 
-// Configurer __dirname pour ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -22,12 +21,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Servir les fichiers statiques du dossier public
-app.use(express.static(path.join(__dirname, '/')));
+// Servir les fichiers statiques du dossier dist
+app.use(express.static(path.join(__dirname, 'dist')));
 
-// Rediriger la route racine vers index.html
+// Rediriger la route racine vers index.html dans dist
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.use(mes_routes);
