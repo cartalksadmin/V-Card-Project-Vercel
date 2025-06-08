@@ -23,11 +23,11 @@ app.use(cors());
 app.use(express.json());
 
 // Servir les fichiers statiques du dossier public
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, 'V-Card-Project-Vercel')));
 
 // Rediriger la route racine vers index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/', 'index.html'));
+  res.sendFile(path.join(__dirname, 'V-Card-Project-Vercel', 'index.html'));
 });
 
 app.use(mes_routes);
