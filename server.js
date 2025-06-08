@@ -1,7 +1,13 @@
 import { Pool } from 'pg';
 import cors from 'cors';
 import express from 'express';
+import path from 'path'; // Ajoute cette ligne pour importer le module path
+import { fileURLToPath } from 'url';
 import mes_routes from './src/routes.js';
+
+// Configurer __dirname pour ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -16,7 +22,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Ajoute un gestionnaire pour la route /
+// Servir les fichiers statiques du dossier public
 app.use(express.static(path.join(__dirname, '/')));
 
 // Rediriger la route racine vers index.html
