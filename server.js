@@ -1,10 +1,11 @@
 import { Pool } from 'pg';
-import cors from 'cors';
+import cors from 'cors'; // Importe le middleware cors
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import mes_routes from './src/routes.js';
 
+// Configurer __dirname pour ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -18,7 +19,13 @@ const pool = new Pool({
 
 const app = express();
 
-app.use(cors());
+// Configurer CORS pour autoriser toutes les origines (pour le développement local)
+app.use(cors({
+  origin: 'https://v-card-project-vercel.vercel.app', // Remplace par l'URL de ton frontend local (par ex. Vite)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
+  credentials: true // Si tu utilises des cookies ou des en-têtes d'authentification
+}));
+
 app.use(express.json());
 
 // Servir les fichiers statiques du dossier dist
